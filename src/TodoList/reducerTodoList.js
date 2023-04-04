@@ -20,7 +20,7 @@ export const todoSlice = createSlice({
                 text: action.payload
             });
         },
-        removeTodoList: (state, action) => {
+        deleteOneTodo: (state, action) => {
             state.list = state.list.filter((todo) => todo.id !== action.payload)
         },
         deleteTodoList: (state, action) => {
@@ -44,7 +44,7 @@ export const todoSlice = createSlice({
 
 export const { 
     addTodoList, 
-    removeTodoList, 
+    deleteOneTodo, 
     deleteTodoList, 
     isFinished, 
     deleteIisFinished

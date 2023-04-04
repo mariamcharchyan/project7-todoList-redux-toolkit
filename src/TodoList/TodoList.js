@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
     addTodoList,
-    removeTodoList,
+    deleteOneTodo,
     deleteTodoList,
     isFinished,
     deleteIisFinished,
@@ -42,7 +42,7 @@ export default function TodoList() {
                                 <input type='checkbox' checked={todo.isFinished} onChange={() => dispatch(isFinished(todo.id))}/>
                                 <p>{todo.text}</p>
                             </div>
-                            <button onClick={() => dispatch(removeTodoList(todo.id))}>X</button>
+                            <button onClick={() => dispatch(deleteOneTodo(todo.id))}>X</button>
                         </div>
                     )
                 })}
