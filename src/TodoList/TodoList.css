@@ -1,0 +1,118 @@
+.todoContainer {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-top: 20px;
+    width: 500px;
+    min-height: 200px;
+    border-radius: 4px;
+    border: 5px solid #ccc;
+    color: #333;
+    position: relative;
+  }
+
+  .todoTitle h1 {
+    color: #828282;
+    text-shadow: 6px 6px 2px #ccc;
+  }
+  
+  .todoForm {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .todoForm input {
+    padding: 8px;
+    margin: 5px;
+    width: 400px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: 5px solid #ccc;
+    margin-right: 8px;
+    color: #333;
+  }
+  
+  .todoForm button {
+    padding: 8px;
+    margin: 5px;
+    width: 80px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .todoList {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    margin-bottom: 60px;
+  }
+
+  .todoItem{
+    display: flex;
+    display: flex;
+    justify-content: space-between;
+    margin: 5px;
+    border-radius: 4px;
+    border: 2px solid #ccc;
+    color: #333;
+  }
+
+  .leftTodoItem{
+    display: flex;
+  }
+
+  .todoItem p {
+    padding: 8px;
+    margin: 0;
+  }
+  
+  .todoItem button {
+    padding: 8px;
+    width: 30px;
+    height: 30px;
+    margin: 5px;
+    font-size: 16px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .noTodoDelete{
+    display: none;
+  }
+
+  .todoDelete {
+    position: absolute;
+    bottom: 0;
+    width: 500px;
+    display: flex;
+    justify-content: space-around;
+  }
+  .todoDelete p{
+    padding: 8px;
+    width: 120px;;
+    margin: 5px;
+    font-size: 20px;
+    color: #333;
+  }
+
+  .todoDelete button{
+    padding: 8px;
+    margin: 5px;
+    width: 160px;
+    font-size: 16px;
+    margin: 5px;
+    font-size: 16px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }    
