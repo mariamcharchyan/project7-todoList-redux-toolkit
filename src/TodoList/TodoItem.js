@@ -31,7 +31,7 @@ export default function TodoItem({todo}) {
                         onChange={(e) => setNewText(e.target.value)}
                     />
                 ) : (
-                    <p>{todo.text}</p>
+                    <p className={todo.isFinished  ? 'isFinished' : 'noIsFinished'}>{todo.text}</p>
                 )}
             </div>
             <div className="rightTodoItem">
@@ -42,7 +42,7 @@ export default function TodoItem({todo}) {
                     </div>
                 ) : (
                     <div className="editButtons">
-                        <button onClick={() => dispatch(editTodoText(todo.id))}>Edit</button>
+                        <button onClick={() => {dispatch(editTodoText(todo.id));setNewText(todo.text)}}>Edit</button>
                     </div>
                 )}
                 <button className="deleteButton" onClick={() => dispatch(deleteOneTodo(todo.id))}>X</button>
