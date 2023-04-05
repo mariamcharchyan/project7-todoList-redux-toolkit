@@ -1,22 +1,19 @@
-// store-ի համար
 import { createSlice } from '@reduxjs/toolkit';
 
-//սահմանում է todo-ի սկզբնական վիճակը
 const initialState = {
     list:[],
     finishetList:[]
 };
-// store-ի համար
-//Կոդի այս բլոկը ստեղծում է նոր todoSlice՝ կանչելով createSlice ֆունկցիան:
+
 export const todoSlice = createSlice({
     name: 'todo',
     initialState,
-    //reducers հատկությունը օբյեկտ է, որը սահմանում է հատվածի reducer-ները
     reducers: {
         addTodoList: (state, action) => {
             state.list.push({
                 id: Math.random(),
                 isFinished: false,
+                isEditing: false,
                 text: action.payload
             });
         },
@@ -30,7 +27,7 @@ export const todoSlice = createSlice({
         isFinished: (state, action) => {
             state.list.map(todo => {
                 if (todo.id === action.payload){
-                    todo.isFinished = true;
+                    todo.isFinished = !todo.isFinished;
                 }
             })
             state.finishetList = state.list.filter((todo) => todo.isFinished)
@@ -38,7 +35,23 @@ export const todoSlice = createSlice({
         deleteIisFinished: (state, action) => {
             state.finishetList = action.payload
             state.list = state.list.filter((todo) => !todo.isFinished)
-        }
+        },
+        editTodoText: (state, action) => {
+            state.list.map(todo => {
+                if (todo.id === action.payload){
+                    todo.isEditing = !todo.isEditing; 
+                }
+            })
+        },
+        updateTodoText: (state, action) => {
+            const { id, text } = action.payload;
+            state.list.map(todo => {
+                if (todo.id === id){
+                    todo.text = text;
+                    todo.isEditing = !todo.isEditing;
+                }
+            })
+        },
     },
 });
 
@@ -47,7 +60,9 @@ export const {
     deleteOneTodo, 
     deleteTodoList, 
     isFinished, 
-    deleteIisFinished
+    deleteIisFinished,
+    updateTodoText,
+    editTodoText
 } = todoSlice.actions;
 
 export const selectTodo = (state) => state.todo;

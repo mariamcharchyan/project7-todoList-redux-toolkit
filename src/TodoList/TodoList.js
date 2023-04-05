@@ -2,19 +2,20 @@ import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
     addTodoList,
-    deleteOneTodo,
     deleteTodoList,
-    isFinished,
     deleteIisFinished,
     selectTodo,
-} from './reducerTodoList';
-import './TodoList.css'
+    } from './reducerTodoList';
+import './TodoList.css';
+import TodoItem from "./TodoItem";
 
 
 export default function TodoList() {
-        const data = useSelector(selectTodo);
-        const dispatch = useDispatch();
-        const [text, setText] = useState("");
+
+    const data = useSelector(selectTodo);
+    const dispatch = useDispatch();
+
+    const [text, setText] = useState("");
 
     console.log(data);
     return (
@@ -35,16 +36,10 @@ export default function TodoList() {
                 > Add </button>
             </div>
             <div className='todoList'>
-                {data.list.map((todo) =>{
+                {data.list.map((todo) => {
                     return (
-                        <div className='todoItem'key={todo.id}>
-                            <div className='leftTodoItem'>
-                                <input type='checkbox' checked={todo.isFinished} onChange={() => dispatch(isFinished(todo.id))}/>
-                                <p>{todo.text}</p>
-                            </div>
-                            <button onClick={() => dispatch(deleteOneTodo(todo.id))}>X</button>
-                        </div>
-                    )
+                        <TodoItem key={todo.id} todo={todo}/>
+                    );  
                 })}
             </div>
             <div className={data.list.length < 1 ? 'noTodoDelete' : 'todoDelete'}>
